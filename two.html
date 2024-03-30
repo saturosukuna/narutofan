@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Naruto Fan Page</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.2/tailwind.min.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+  <div id="head"></div>
+  <div id="root"></div>
+
+  <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+   
+  <script type="text/babel">
+
+    const Card = ({ name, imageSrc, rank, power, description }) => (
+   <div className="flex font-sans py-2">
+    <div className="flex-none">
+      <img src={imageSrc} className="flex-none w-80 h-60 object-cover"/>
+    </div>
+    <div className="flex-auto mx-1 p-4 border rounded-lg shadow-lg border-slate-800">
+      <div className="flex flex-wrap py-2">
+        <h1 className="flex-auto font-bold font-serif">{name}</h1>
+        <p className="font-mono">Rank {rank}</p>
+      </div>
+        <div className="font-Arialblack pb-4 border-b border-blue-900">{power}</div>
+      <form className="flex-none flex py-2">
+          <label className="px-4">
+            <input className="sr-only peer" type="radio" name="rank" value="S" checked/>
+            <div className="w-9 h-9 text-xs flex items-center rounded-md justify-center text-slate-800 peer-checked:text-white peer-checked:bg-slate-900">
+              S
+            </div>
+          </label>
+          <label className="px-4">
+            <input className="sr-only peer" type="radio" name="rank" value="A" />
+            <div className="w-9 h-9 text-xs flex items-center rounded-md justify-center  text-slate-800 peer-checked:text-white peer-checked:bg-slate-900">
+            A
+            </div>
+          </label>
+          <label className="px-4">
+            <input className="sr-only peer" type="radio" name="rank" value="B"/>
+            <div className="w-9 h-9 text-xs flex items-center rounded-md justify-center text-slate-800 peer-checked:text-white peer-checked:bg-slate-900">
+              B
+            </div>
+            </label>
+          <label className="px-4">
+            <input className="sr-only peer" type="radio" name="rank" value="C"/>
+            <div className="w-9 h-9 text-xs flex items-center rounded-md justify-center text-slate-800 peer-checked:text-white peer-checked:bg-slate-900">
+              C
+            </div>
+          </label>
+          
+      </form>
+      <button className="w-20 h-8 bg-white text-black text-center rounded-md border-b      border-slate-800 hover:text-white hover:bg-black">vote him</button>
+      <button className="w-20 h-8 bg-white text-black text-center rounded-md border-b mx-6 border-slate-800 hover:text-white hover:bg-black" >No vote</button>
+      <div className="text-sm pt-4 font-semibold">{description}</div>
+    </div>
+   </div>
+   
+   
+    );
+
+    // Example usage of the Card component
+    const App = () => (
+      <div classNameName="grid grid-cols-3 gap-4">
+        <Card name="Naruto Uzumaki" imageSrc="naruto.jpg" rank="1" power="The Naintails Comrade" description="The son of 4th hokagae and student of master jiraiya."/>
+        <Card name="Sasuke Uchiha" imageSrc="sasuke1.jpg" rank="2" power="The Last Uchiha" description="Brother of god of genjustsu user itachi uchiha."/>
+        <Card name="Minato Namikazae" imageSrc="minato.jpg" rank="3" power="The yellow Flash Of Konaha" description="The Fourth Hokagae sir!!!"/>
+        <Card name="Hashirama Senju" imageSrc="hashirama.jpg" rank="4" power="The God Of Shinobi" description="The First Hokage"/>
+        <Card name="Madara Uchiha" imageSrc="madara.jpg" rank="5" power="The Ghost Of The Uchiha" description="He want to escape from this cruel reality...."/>
+        <Card name="Obito Uchiha" imageSrc="obito.jpg" rank="6" power="The Broken Hero Of The Naruto Series" description="He can't feel pain any longer"/>
+        <Card name="Itachi Uchiha" imageSrc="itachi.jpg" rank="7" power="The God Of Genjustsu" description="One's reality might be another's illusion"/>
+        <Card name="Jiraiya" imageSrc="jiraiya.jpg" rank="8" power="The Toad Sage" description="The lengendary sanin of the hidden leaf"/>
+        <Card name="pain" imageSrc="pain.jpg" rank='9' power="Ore Orewa pain" description="Feel pain, Accept pain, and know pain"/>
+        <Card name="Shisui Uchiha" imageSrc="shisui.jpg" rank="10" power="The shisui The Teleporter" description="The powerful genjutsu user." />
+        <Card name="Kakashi Hatake" imageSrc="kakashi.jpg" rank="11" power="The Copy Ninja" description="Most underrated character"/>
+      </div>
+    );
+
+    const Header = () => (
+      <div className="w-full mx-auto h-[100px] rounded-lg bg-sky-600 rounded border-b border-black shadow-lg">
+      <p className="text-white text-center p-10 text-lg font-serif">THE RANKING OF NARUTO CHARACTERS</p>
+      </div>
+    )
+
+    ReactDOM.render(<Header />,document.getElementById('head'));
+    ReactDOM.render(<App />, document.getElementById('root'));
+  </script>
+</body>
+</html>

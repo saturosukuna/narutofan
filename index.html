@@ -14,11 +14,23 @@
   <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
   <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="https://unpkg.com/react-router-dom@5.3.0/umd/react-router-dom.min.js"></script>
+
    
   <script type="text/babel">
+const { BrowserRouter, Route, Link, useLocation, withRouter  } = ReactRouterDOM;
 
+const ScrollToTop = () => {
+      const { pathname } = useLocation();
+
+      React.useEffect(() => {
+        window.scrollTo(0, 0);
+      }, [pathname]);
+
+      return null;
+    };
     const Card = ({ name, imageSrc, rank, power, description }) => (
-      <div className="font-sans py-2">
+      <div className="m-5 font-sans py-2">
   <div className="flex flex-col sm:flex-row">
     <div className="flex sm:flex-none">
       <img src={imageSrc} className="w-full h-full object-cover"/>
@@ -56,21 +68,30 @@
         </label>
       </form>
       <div className="flex justify-center sm:justify-start mt-2">
-        <button className="w-20 h-8 bg-white text-black text-center rounded-md border border-slate-800 hover:text-white hover:bg-black">Vote</button>
-        <button className="w-20 h-8 bg-white text-black text-center rounded-md border mx-2 border-slate-800 hover:text-white hover:bg-black">No Vote</button>
+        <button className="w-20 h-8 bg-white text-black text-center rounded-md border border-slate-800 hover:text-white hover:bg-black"><Link to="/vote">Vote</Link></button>
+        <button className="w-20 h-8 bg-white text-black text-center rounded-md border mx-2 border-slate-800 hover:text-white hover:bg-black"><Link to="/novote">No Vote</Link></button>
       </div>
       <div className="text-sm pt-4 font-semibold">{description}</div>
     </div>
   </div>
-</div>
-
-   
-   
+</div>   
     );
 
-    // Example usage of the Card component
+  
+
+    const Header = () => (
+      <div class="w-full mx-auto h-[100px] rounded-lg bg-sky-600 rounded border-b border-black shadow-lg">
+    <p class="text-white text-center py-4 px-2 sm:py-10 sm:px-0 text-lg font-serif">THE RANKING OF NARUTO CHARACTERS</p>
+</div>
+    )
+
+
     const App = () => (
-      <div classNameName="grid grid-cols-3 gap-4">
+      <BrowserRouter>
+        <div>
+          <ScrollToTop />
+        <Header/>
+        <div classNameName="grid grid-cols-3 gap-4">
         <Card name="Naruto Uzumaki" imageSrc="naruto.jpg" rank="1" power="The Naintails Comrade" description="The son of 4th hokagae and student of master jiraiya."/>
         <Card name="Sasuke Uchiha" imageSrc="sasuke1.jpg" rank="2" power="The Last Uchiha" description="Brother of god of genjustsu user itachi uchiha."/>
         <Card name="Minato Namikazae" imageSrc="minato.jpg" rank="3" power="The yellow Flash Of Konaha" description="The Fourth Hokagae sir!!!"/>
@@ -83,16 +104,20 @@
         <Card name="Shisui Uchiha" imageSrc="shisui.jpg" rank="10" power="The shisui The Teleporter" description="The powerful genjutsu user." />
         <Card name="Kakashi Hatake" imageSrc="kakashi.jpg" rank="11" power="The Copy Ninja" description="Most underrated character"/>
       </div>
+
+          <hr />
+
+          <Route exact path="/" component={App} />
+          <Route path="/vote" component={vote} />
+          <Route path="/novote" component={novote} />
+        </div>
+      </BrowserRouter>
     );
 
-    const Header = () => (
-      <div class="w-full mx-auto h-[100px] rounded-lg bg-sky-600 rounded border-b border-black shadow-lg">
-    <p class="text-white text-center py-4 px-2 sm:py-10 sm:px-0 text-lg font-serif">THE RANKING OF NARUTO CHARACTERS</p>
-</div>
+  
+    const vote = () => <h2>About</h2>;
+    const novote = () => <h2>Contact</h2>;
 
-    )
-
-    ReactDOM.render(<Header />,document.getElementById('head'));
     ReactDOM.render(<App />, document.getElementById('root'));
   </script>
 </body>

@@ -18,48 +18,52 @@
   <script type="text/babel">
 
     const Card = ({ name, imageSrc, rank, power, description }) => (
-   <div className="flex font-sans py-2">
-    <div className="flex-none">
-      <img src={imageSrc} className="flex-none w-80 h-60 object-cover"/>
+      <div className="font-sans py-2">
+  <div className="flex flex-col sm:flex-row">
+    <div className="flex sm:flex-none">
+      <img src={imageSrc} className="w-full h-full object-cover"/>
     </div>
-    <div className="flex-auto mx-1 p-4 border rounded-lg shadow-lg border-slate-800">
+    <div className="flex-auto mx-1  p-4 border rounded-lg shadow-lg border-slate-800 mt-2 sm:mt-0">
       <div className="flex flex-wrap py-2">
         <h1 className="flex-auto font-bold font-serif">{name}</h1>
         <p className="font-mono">Rank {rank}</p>
       </div>
-        <div className="font-Arialblack pb-4 border-b border-blue-900">{power}</div>
-      <form className="flex-none flex py-2">
-          <label className="px-4">
-            <input className="sr-only peer" type="radio" name="rank" value="S" checked/>
-            <div className="w-9 h-9 text-xs flex items-center rounded-md justify-center text-slate-800 peer-checked:text-white peer-checked:bg-slate-900">
-              S
-            </div>
-          </label>
-          <label className="px-4">
-            <input className="sr-only peer" type="radio" name="rank" value="A" />
-            <div className="w-9 h-9 text-xs flex items-center rounded-md justify-center  text-slate-800 peer-checked:text-white peer-checked:bg-slate-900">
+      <div className="font-Arialblack pb-4 border-b border-blue-900">{power}</div>
+      <form className="flex flex-wrap justify-center sm:justify-start py-2">
+        <label className="px-2 sm:px-4">
+          <input className="sr-only peer" type="radio" name="rank" value="S" checked/>
+          <div className="w-9 h-9 text-xs flex items-center rounded-md justify-center text-slate-800 peer-checked:text-white peer-checked:bg-slate-900">
+            S
+          </div>
+        </label>
+        <label className="px-2 sm:px-4">
+          <input className="sr-only peer" type="radio" name="rank" value="A" />
+          <div className="w-9 h-9 text-xs flex items-center rounded-md justify-center text-slate-800 peer-checked:text-white peer-checked:bg-slate-900">
             A
-            </div>
-          </label>
-          <label className="px-4">
-            <input className="sr-only peer" type="radio" name="rank" value="B"/>
-            <div className="w-9 h-9 text-xs flex items-center rounded-md justify-center text-slate-800 peer-checked:text-white peer-checked:bg-slate-900">
-              B
-            </div>
-            </label>
-          <label className="px-4">
-            <input className="sr-only peer" type="radio" name="rank" value="C"/>
-            <div className="w-9 h-9 text-xs flex items-center rounded-md justify-center text-slate-800 peer-checked:text-white peer-checked:bg-slate-900">
-              C
-            </div>
-          </label>
-          
+          </div>
+        </label>
+        <label className="px-2 sm:px-4">
+          <input className="sr-only peer" type="radio" name="rank" value="B"/>
+          <div className="w-9 h-9 text-xs flex items-center rounded-md justify-center text-slate-800 peer-checked:text-white peer-checked:bg-slate-900">
+            B
+          </div>
+        </label>
+        <label className="px-2 sm:px-4">
+          <input className="sr-only peer" type="radio" name="rank" value="C"/>
+          <div className="w-9 h-9 text-xs flex items-center rounded-md justify-center text-slate-800 peer-checked:text-white peer-checked:bg-slate-900">
+            C
+          </div>
+        </label>
       </form>
-      <button className="w-20 h-8 bg-white text-black text-center rounded-md border-b      border-slate-800 hover:text-white hover:bg-black">vote him</button>
-      <button className="w-20 h-8 bg-white text-black text-center rounded-md border-b mx-6 border-slate-800 hover:text-white hover:bg-black" >No vote</button>
+      <div className="flex justify-center sm:justify-start mt-2">
+        <button className="w-20 h-8 bg-white text-black text-center rounded-md border border-slate-800 hover:text-white hover:bg-black">Vote</button>
+        <button className="w-20 h-8 bg-white text-black text-center rounded-md border mx-2 border-slate-800 hover:text-white hover:bg-black">No Vote</button>
+      </div>
       <div className="text-sm pt-4 font-semibold">{description}</div>
     </div>
-   </div>
+  </div>
+</div>
+
    
    
     );
@@ -82,9 +86,10 @@
     );
 
     const Header = () => (
-      <div className="w-full mx-auto h-[100px] rounded-lg bg-sky-600 rounded border-b border-black shadow-lg">
-      <p className="text-white text-center p-10 text-lg font-serif">THE RANKING OF NARUTO CHARACTERS</p>
-      </div>
+      <div class="w-full mx-auto h-[100px] rounded-lg bg-sky-600 rounded border-b border-black shadow-lg">
+    <p class="text-white text-center py-4 px-2 sm:py-10 sm:px-0 text-lg font-serif">THE RANKING OF NARUTO CHARACTERS</p>
+</div>
+
     )
 
     ReactDOM.render(<Header />,document.getElementById('head'));

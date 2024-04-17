@@ -1,124 +1,298 @@
-<!DOCTYPE html>
+
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Naruto Fan Page</title>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.2/tailwind.min.css" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body>
-  <div id="head"></div>
-  <div id="root"></div>
-
   <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
   <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <script src="https://unpkg.com/react-router-dom@5.3.0/umd/react-router-dom.min.js"></script>
 
+</head>
+<style>
+
+
+  img{
+    border-radius: 5px;
+  }
+ .container{
+  display:flex;
+  padding:5px;
+  gap:5px;
+ }
+ @media (max-width: 1024px) {
+  .container{
+    flex-wrap: wrap;
+  }
+  .narutuku{
+    flex-wrap: wrap;
+    width:100%;
+  }
+  .abouts{
+    
+    
+  }
+  .viii{
+    width:100%;
+    
+  }
+}
+ .card{
+  margin:6px;
+  border:1px solid black;
+  border-radius:5px;
+  width:100%;
+  padding-left:20px;
+  padding-right:20px;
+ }
+ .names{
+  display: flex;
+  font-family:Helvetica;
+  justify-content: space-between;
+ }
+ .name{
+  font-weight:1000;
+ }
+.rank{
+  font-weight:bold;
+  font-family:'Times New Roman';
+}
+.about{
+  font-family: monospace;
+  font-size:large;
+   font-weight:bolder;
+  padding-bottom:10px;
+  border-bottom:2px solid black;
+}
+.details{
+  display:flex;
+  font-weight:bolder;
+}
+input[type="radio"] {
+    display: none;
+}
+
+
+.radio-label{
+  padding:6px;
+  text-align:center;
+  border-radius:5px;
+  margin-right:20px;
+}
+
+.radio-label:focus,.radio-label:hover,.radio-label:active{
+  background-color:black;
+  color:white;
+}
+
+
+button{
+  margin-top:10px;
+  background-color:white;
+  border-radius:5px;
+  padding:10px;
+  padding-left:40px;
+  padding-right:40px;
+  margin-left:10px;
+  font-family:'Franklin Gothic Medium';
+}
+button:focus,button:hover,button:active{
+  background-color:black;
+  color:white;
+
+}
+.char{
+  padding-top:20px;
+  font-family: Geneva;
+  font-weight:bold;
+}
+input[type="radio"]:checked + .radio-label {
+  background-color:black;
+  color:white;
+}
+.view{
+  display:none;
+}
+.narutoview{
+  display:block;
+}
+.narutuku{
+  display:flex;
+  gap:5px;
+}
+.viii{
+  width:100%;
+  border:3px solid black;
+  background-color:black;
+  color:white;
+  padding:5px;
+  border-radius:5px;
+  font-family:monospace;
+  font-weight:bolder;
+  font-size: 14px;
+
+}
+
+.progressbar{
+  margin:5px;
+  height:20px;
+  background-color:white;
+  border:3px solid white;
+}
+.progress{
+  width:var(--my-per);
+  height:20px;
+  background-color:rgb(55, 204, 14);
+  animation:animate 5s linear;
+}
+@keyframes animate{
+  from{
+    width:0px;
+  }
+  to{
+    width:var(--my-per);
+  }
+}
+
+.abouts{
+  border:3px solid black;
+  font-family:monospace;
+  font-weight:bold;
+  font-size:14px;
+  padding-left:15px;
+  border-radius:5px;
+  
+}
+li{
+  padding-bottom:10px;
+}
+span{
+  
+  color:blue;
+}
+
+
+</style>
+<body>
+  <div id="root"></div>
    
-  <script type="text/babel">
-const { BrowserRouter, Route, Link, useLocation, withRouter  } = ReactRouterDOM;
+<script type="text/babel">
 
-const ScrollToTop = () => {
-      const { pathname } = useLocation();
-
-      React.useEffect(() => {
-        window.scrollTo(0, 0);
-      }, [pathname]);
-
-      return null;
-    };
-    const Card = ({ name, imageSrc, rank, power, description }) => (
-      <div className="m-2 font-sans py-2">
-  <div className="flex flex-col sm:flex-row">
-    <div className="flex sm:flex-none">
-      <img src={imageSrc} className="w-full h-full object-cover"/>
-    </div>
-    <div className="flex-auto mx-1  p-4 border rounded-lg shadow-lg border-slate-800 mt-2 sm:mt-0">
-      <div className="flex flex-wrap py-2">
-        <h1 className="flex-auto font-bold font-serif">{name}</h1>
-        <p className="font-mono">Rank {rank}</p>
-      </div>
-      <div className="font-Arialblack pb-4 border-b border-blue-900">{power}</div>
-      <form className="flex flex-wrap justify-center sm:justify-start py-2">
-        <label className="px-2 sm:px-4">
-          <input className="sr-only peer" type="radio" name="rank" value="S"/>
-          <div className="w-9 h-9 text-xs flex items-center rounded-md justify-center text-slate-800 peer-checked:text-white peer-checked:bg-slate-900">
-            S
-          </div>
-        </label>
-        <label className="px-2 sm:px-4">
-          <input className="sr-only peer" type="radio" name="rank" value="A" />
-          <div className="w-9 h-9 text-xs flex items-center rounded-md justify-center text-slate-800 peer-checked:text-white peer-checked:bg-slate-900">
-            A
-          </div>
-        </label>
-        <label className="px-2 sm:px-4">
-          <input className="sr-only peer" type="radio" name="rank" value="B"/>
-          <div className="w-9 h-9 text-xs flex items-center rounded-md justify-center text-slate-800 peer-checked:text-white peer-checked:bg-slate-900">
-            B
-          </div>
-        </label>
-        <label className="px-2 sm:px-4">
-          <input className="sr-only peer" type="radio" name="rank" value="C"/>
-          <div className="w-9 h-9 text-xs flex items-center rounded-md justify-center text-slate-800 peer-checked:text-white peer-checked:bg-slate-900">
-            C
-          </div>
-        </label>
-      </form>
-      <div className="flex justify-center sm:justify-start mt-2">
-        <button className="w-20 h-8 bg-white text-black text-center rounded-md border border-slate-800 hover:text-white hover:bg-black"><Link to="/vote">Vote</Link></button>
-        <button className="w-20 h-8 bg-white text-black text-center rounded-md border mx-2 border-slate-800 hover:text-white hover:bg-black"><Link to="/novote">No Vote</Link></button>
-      </div>
-      <div className="text-sm pt-4 font-semibold">{description}</div>
-    </div>
-  </div>
-</div>   
-    );
+const { useState } = React;
 
   
 
-    const Header = () => (
-      <div class="w-full mx-auto h-[100px] rounded-lg bg-sky-600 rounded border-b border-black shadow-lg">
-    <p class="text-white text-center py-4 px-2 sm:py-10 sm:px-0 text-lg font-serif">THE RANKING OF NARUTO CHARACTERS</p>
-</div>
-    )
+    const Card = ({imgSrc,name,rank,about,words,power,a,b,c,d,e}) => {
 
+      const [r, setR] = useState(true);
 
-    const App = () => (
-      <BrowserRouter>
-        <div>
-          <ScrollToTop />
-        <Header/>
-        <div classNameName="grid grid-cols-3 gap-4">
-        <Card name="Naruto Uzumaki" imageSrc="naruto.jpg" rank="1" power="The Naintails Comrade" description="The son of 4th hokagae and student of master jiraiya."/>
-        <Card name="Sasuke Uchiha" imageSrc="sasuke1.jpg" rank="2" power="The Last Uchiha" description="Brother of god of genjustsu user itachi uchiha."/>
-        <Card name="Minato Namikazae" imageSrc="minato.jpg" rank="3" power="The yellow Flash Of Konaha" description="The Fourth Hokagae sir!!!"/>
-        <Card name="Hashirama Senju" imageSrc="hashirama.jpg" rank="4" power="The God Of Shinobi" description="The First Hokage"/>
-        <Card name="Madara Uchiha" imageSrc="madara.jpg" rank="5" power="The Ghost Of The Uchiha" description="He want to escape from this cruel reality...."/>
-        <Card name="Obito Uchiha" imageSrc="obito.jpg" rank="6" power="The Broken Hero Of The Naruto Series" description="He can't feel pain any longer"/>
-        <Card name="Itachi Uchiha" imageSrc="itachi.jpg" rank="7" power="The God Of Genjustsu" description="One's reality might be another's illusion"/>
-        <Card name="Jiraiya" imageSrc="jiraiya.jpg" rank="8" power="The Toad Sage" description="The lengendary sanin of the hidden leaf"/>
-        <Card name="pain" imageSrc="pain.jpg" rank='9' power="Ore Orewa pain" description="Feel pain, Accept pain, and know pain"/>
-        <Card name="Shisui Uchiha" imageSrc="shisui.jpg" rank="10" power="The shisui The Teleporter" description="The powerful genjutsu user." />
-        <Card name="Kakashi Hatake" imageSrc="kakashi.jpg" rank="11" power="The Copy Ninja" description="Most underrated character"/>
+  const handleView = () => {
+    setR(prevR => !prevR);
+  };
+    return(
+      <div>
+    <div className="container">
+          <img src={imgSrc} alt="dd" />
+          <div className="card">
+          <div className="names">
+              <p className="name">{name}i</p>
+              <p className="rank">Rank {rank}</p>
+          </div>
+          <p className="about">{about}</p>
+          <div className="details">
+              <input  type="radio" name="rank" id="S" value="S" />
+              <label className="radio-label" for="S">S</label>
+              <input  type="radio" name="rank" id="A" value="A" />
+              <label className="radio-label" for="A">A</label>
+              <input  type="radio" name="rank" id="B" value="B" />
+              <label className="radio-label" for="B">B</label>
+              <input  type="radio" name="rank" id="C" value="C" />
+              <label className="radio-label" for="C">C</label>
+              <input  type="radio" name="rank" id="D" value="D" />
+              <label className="radio-label" for="D">D</label>
+          </div>
+          <button>Vote</button>
+          <button onClick={handleView}>View</button>
+          <div className="char"> {words}</div>
       </div>
-
-          <hr />
-
-          <Route exact path="/" component={App} />
-          <Route path="/vote" component={vote} />
-          <Route path="/novote" component={novote} />
+    </div>
+    <div className="narutoview" style={{ display: r ? 'none' : 'block' }}>
+      <div className="narutuku">
+        <div className="viii">
+        <label>Power:</label>
+        <div className="progressbar">
+          <div className="progress" style={{ '--my-per': a}}>
         </div>
-      </BrowserRouter>
-    );
+        </div>
+        <label>Strength:</label>
+        <div className="progressbar">
+          <div className="progress" style={{ '--my-per': b}} >
+        </div>
+        </div>
+        <label>Durability:</label>
+        <div className="progressbar">
+          <div className="progress" style={{ '--my-per': c}}>
+        </div>
+        </div>
+        <label>Iq</label>
+        
+        <div className="progressbar">
+          <div className="progress" style={{ '--my-per':d}} >
+        </div>
+        </div>
+        <label>Jutsu</label>
+        <div className="progressbar">
+          <div className="progress" style={{ '--my-per':e}}>
+        </div>
+      </div>
+    </div>
+        <div className="abouts" dangerouslySetInnerHTML={{ __html: power }}>
+        </div>
+      </div>
+      
+  </div>
+    </div>
+    )
+  
+  };
+
+  const App =()=>(
+    <div>
+    <Card imgSrc="naruto.jpg" name="Naruto Uzumaki" rank='1' about='The Nine tails comrade' words='The Son Of Fouth Hokage Sir' power="<ul>
+          <li><span>Ninjutsu:</span> Naruto wields chakra for elemental manipulation and summoning.</li>
+          <li><span>Taijutsu:</span> He hones hand-to-hand combat skills under Might Guy.</li>
+          <li><span>Genjutsu:</span> Illusions manipulate opponents' senses, though not Naruto's forte.</li>
+          <li><span>Chakra:</span> Fundamental energy, manipulated for techniques and enhancements.</li>
+          <li><span>Sage Mode:</span> Harnessing natural energy boosts strength, speed, and perception.</li>
+          <li><span>Tailed Beast:</span> As Kurama's host, Naruto accesses immense chakra and transformations.</li>
+          <li><span>Rasengan:</span> Mastered from Jiraiya, a spinning sphere of controlled chakra.</li>
+          <li><span>Shadow Clone Jutsu:</span> Naruto creates numerous clones for combat or multitasking.</li>
+          <li><span>Summoning Jutsu:</span> Able to summon toads from Mount Myoboku for assistance.</li>
+          <li><span>Flying Raijin:</span> Mastered by Minato Namikaze, Naruto's father, allows teleportation.</li>
+          </ul>" a="100%" b="90%" c="90%" d="80%" e="50%"/>
+          
+          <Card imgSrc="sasuke1.jpg" name="Sasuke Uchiha" rank='2' about='The Last Uchiha' words='The incarination of Indra' power="<ul>
+  <li><span>Sharingan:</span> A powerful dojutsu granting enhanced perception, copying abilities, and genjutsu resistance.</li>
+  <li><span>Chidori:</span> A lightning-based technique capable of piercing targets with precision.</li>
+  <li><span>Fire Release:</span> Sasuke can manipulate fire chakra for offensive techniques.</li>
+  <li><span>Susanoo:</span> An ethereal warrior manifested from his chakra, providing formidable defense and offense.</li>
+  <li><span>Amaterasu:</span> An inextinguishable black fire capable of burning anything it touches.</li>
+  <li><span>Kirin:</span> A powerful lightning technique summoned from the atmosphere, capable of devastating targets.</li>
+  <li><span>Genjutsu:</span> While not his primary focus, Sasuke possesses skill in illusion techniques.</li>
+  <li><span>Summoning Jutsu:</span> Able to summon snakes for combat or reconnaissance.</li>
+  <li><span>Rinnegan:</span> Acquired later in the series, grants control over life and death, as well as access to new techniques.</li>
+  <li><span>Enton (Blaze Release):</span> A fusion of fire and Amaterasu, creating highly intense flames.</li>
+</ul> "a="100%" b="90%" c="90%" d="80%" e="50%"/>
+    
+    </div>
+  );
+
+
 
   
-    const vote = () => <h2>Not updated right now</h2>;
-    const novote = () => <h2>Currently not updated</h2>;
-
-    ReactDOM.render(<App />, document.getElementById('root'));
-  </script>
-</body>
+  
+ReactDOM.render(<App />, document.getElementById('root'));
+</script>
+</body
 </html>

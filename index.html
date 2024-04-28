@@ -45,6 +45,7 @@
   width:100%;
   padding-left:20px;
   padding-right:20px;
+  padding-bottom:10px;
  }
  .names{
   display: flex;
@@ -171,10 +172,23 @@ span{
   
   color:blue;
 }
+#header{
+     height:100px;
+     background-color:rgb(10, 17, 8);
+     border-radius:5px;
+     font-family:Arial;
+     color:white;
+     place-content:center;
+     font-size: larger;
+     text-align:center;
+     text-shadow: 0 0 7px white;
+     
+}
 
 
 </style>
 <body>
+  <div id="header">A Simple Fan Page Of Naruto</div>
   <div id="root"></div>
    
 <script type="text/babel">
@@ -270,7 +284,7 @@ const { useState } = React;
           <li><span>Shadow Clone Jutsu:</span> Naruto creates numerous clones for combat or multitasking.</li>
           <li><span>Summoning Jutsu:</span> Able to summon toads from Mount Myoboku for assistance.</li>
           <li><span>Flying Raijin:</span> Mastered by Minato Namikaze, Naruto's father, allows teleportation.</li>
-          </ul>" a="100%" b="90%" c="90%" d="80%" e="50%"/>
+          </ul>" a="100%" b="95%" c="99%" d="95%" e="50%"/>
           
           <Card imgSrc="sasuke1.jpg" name="Sasuke Uchiha" rank='2' about='The Last Uchiha' words='The incarination of Indra' power="<ul>
   <li><span>Sharingan:</span> A powerful dojutsu granting enhanced perception, copying abilities, and genjutsu resistance.</li>
@@ -283,7 +297,20 @@ const { useState } = React;
   <li><span>Summoning Jutsu:</span> Able to summon snakes for combat or reconnaissance.</li>
   <li><span>Rinnegan:</span> Acquired later in the series, grants control over life and death, as well as access to new techniques.</li>
   <li><span>Enton (Blaze Release):</span> A fusion of fire and Amaterasu, creating highly intense flames.</li>
-</ul> "a="100%" b="90%" c="90%" d="80%" e="50%"/>
+</ul> "a="100%" b="90%" c="90%" d="96%" e="60%"/>
+
+<Card imgSrc="minato.jpg" name="Minato Namikazae" rank='3' about='The Yellow Flash Of THe Konaha' words='The Fourth Hokagae Sir!!!' power="<ul>
+  <li><span>Sharingan:</span> A powerful dojutsu granting enhanced perception, copying abilities, and genjutsu resistance.</li>
+  <li><span>Chidori:</span> A lightning-based technique capable of piercing targets with precision.</li>
+  <li><span>Fire Release:</span> Sasuke can manipulate fire chakra for offensive techniques.</li>
+  <li><span>Susanoo:</span> An ethereal warrior manifested from his chakra, providing formidable defense and offense.</li>
+  <li><span>Amaterasu:</span> An inextinguishable black fire capable of burning anything it touches.</li>
+  <li><span>Kirin:</span> A powerful lightning technique summoned from the atmosphere, capable of devastating targets.</li>
+  <li><span>Genjutsu:</span> While not his primary focus, Sasuke possesses skill in illusion techniques.</li>
+  <li><span>Summoning Jutsu:</span> Able to summon snakes for combat or reconnaissance.</li>
+  <li><span>Rinnegan:</span> Acquired later in the series, grants control over life and death, as well as access to new techniques.</li>
+  <li><span>Enton (Blaze Release):</span> A fusion of fire and Amaterasu, creating highly intense flames.</li>
+</ul> "a="100%" b="90%" c="90%" d="96%" e="60%"/>
     
     </div>
   );
